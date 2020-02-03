@@ -27,7 +27,7 @@ class SoftArgmax1D(torch.nn.Module):
         smax = self.softmax(x)
         end_index = self.base_index + x.size()[1] * self.step_size
         indices = torch.arange(start=self.base_index, end=end_index, step=self.step_size).type(torch.DoubleTensor)
-        return torch.round(torch.matmul(smax, indices))
+        return torch.matmul(smax, indices)
 class WeightedKappaLoss(torch.nn.Module):
     def __init__(self):
         super().__init__()
